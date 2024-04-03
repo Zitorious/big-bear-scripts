@@ -4,10 +4,10 @@
 lan_ip=$(hostname -I | awk '{print $1}')
 
 # Backup the original config.php file
-cp data/DATA/AppData/big-bear-nextcloud/html/config/config.php data/DATA/AppData/big-bear-nextcloud/html/config/config.php.bak
+cp data/DATA/AppData/big-bear-nextcloud/config/config.php data/DATA/AppData/big-bear-nextcloud/config/config.php.bak
 
 # Add the LAN IP to the config.php file
-awk -v ip="$lan_ip" '/0 => '\''localhost'\''/{print; print "    1 => '\''"ip"'\'',"; next}1' data/DATA/AppData/big-bear-nextcloud/html/config/config.php.bak > data/DATA/AppData/big-bear-nextcloud/html/config/config.php
+awk -v ip="$lan_ip" '/0 => '\''localhost'\''/{print; print "    1 => '\''"ip"'\'',"; next}1' data/DATA/AppData/big-bear-nextcloud/config/config.php.bak > data/DATA/AppData/big-bear-nextcloud/config/config.php
 
 # Get the path to the docker-compose.yml file
 COMPOSE_FILE="/var/lib/casaos/apps/big-bear-nextcloud/docker-compose.yml"
