@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONFIG_PATH="/DATA/AppData/frigate/config/config.yml"
+CONFIG_PATH="data/DATA/AppData/frigate/config/config.yml"
 
 # Ensure the directory exists
 mkdir -p $(dirname $CONFIG_PATH)
@@ -10,10 +10,10 @@ cat > $CONFIG_PATH <<EOL
 mqtt:
   host: mqtt.server.com
 cameras:
-  back:
+  front:
     ffmpeg:
       inputs:
-        - path: rtsp://viewer:change_password@10.0.10.10:554/cam/realmonitor?channel=1&subtype=2
+        - path: rtsp://cosmo:cosmotheyorkie@192.168.1.182:8554/unicast
           roles:
             - detect
     detect:
